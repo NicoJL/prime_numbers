@@ -297,5 +297,5 @@ Devise.setup do |config|
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
 
-  config.omniauth :slack, '1732998281767.1753942335972', 'e13427982a8b1af8d5add14056a64245', scope: 'chat:write'
+  config.omniauth :slack, ENV['CLIENT_ID'], ENV['CLIENT_SECRET'], scope: 'chat:write'
 end

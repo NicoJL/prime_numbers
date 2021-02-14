@@ -6,7 +6,7 @@ class HomeController < ApplicationController
 		@current_user = current_user
 
 		Slack.configure do |config|
-		  config.token = "xoxb-1732998281767-1756676392564-ZINJn90VhwQCgxMAZ2btjulH"
+		  config.token = ENV['TOKEN_API']
 		end
 
 		client = Slack::Web::Client.new

@@ -6,8 +6,8 @@ class OauthController < ApplicationController
       site: 'https://slack.com/oauth/authorize'                                  
     }                                                                             
     client ||= OAuth2::Client.new(                                                
-      '1732998281767.1750491674242', 
-      '427a2aafa5337b6687ebca66c87839e9',                                                                                
+       ENV['CLIENT_ID'],
+       ENV['CLIENT_SECRET'],                                                                          
       options                                                                     
     )                                                                             
     params = {                                                                    
@@ -25,7 +25,7 @@ class OauthController < ApplicationController
    
 
     uri = URI('https://slack.com/api/oauth.access')
-		res = Net::HTTP.post_form(uri, 'client_id' => '1732998281767.1750491674242', 'client_secret' => '427a2aafa5337b6687ebca66c87839e9', 'code' => params['code'])
+		res = Net::HTTP.post_form(uri, 'client_id' => ENV['CLIENT_ID'], 'client_secret' =>  ENV['CLIENT_SECRET'], 'code' => params['code'])
 		puts res.body
 		rc = JSON.parse(res.body)
 		puts '****'
