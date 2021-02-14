@@ -8,5 +8,7 @@ App.notification = App.cable.subscriptions.create("NumberChannel",{
 		},
 		received: function(data){
 			console.log(data.item);
+			app.auxNumber = data.item;
+			app.calculatePrime(data.item);
 		}
 	});

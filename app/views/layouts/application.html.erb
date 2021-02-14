@@ -6,14 +6,21 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script>
+      var app;
+    </script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <%= render 'partials/nav' %>
     <%= render 'partials/notifications' %>
-    <div class="container">
+    <div id="app" class="container">
       <%= yield %>
     </div>
+    <%#= javascript_pack_tag 'hello_react' %>
+    <%= javascript_include_tag 'axios' %>
+    <%= javascript_include_tag 'vue' %>
+    <%= javascript_include_tag 'main' %>
   </body>
 </html>
