@@ -1,0 +1,10 @@
+<div class="row mt-4">
+	<div class="col col-12">
+	
+		<%= link_to "Sign in with SLACK", "/authorize" %>
+
+		<% if @current_user %>
+			<h1>Hi, <%= @current_user.email %></h1>
+		<% end %>
+	</div>
+</div>
