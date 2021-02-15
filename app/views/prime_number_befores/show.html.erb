@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @prime_number_before.number %>
+</p>
+
+<p>
+  <strong>Prime number:</strong>
+  <%= @prime_number_before.prime_number %>
+</p>
+
+<%= link_to 'Edit', edit_prime_number_before_path(@prime_number_before) %> |
+<%= link_to 'Back', prime_number_befores_path %>

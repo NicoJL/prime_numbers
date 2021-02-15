@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :prime_number_befores
+  resources :prime_numbers
   devise_for :users, controllers: {
 		sessions: 'users/sessions'
   }

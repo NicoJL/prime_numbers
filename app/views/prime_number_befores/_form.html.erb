@@ -1,0 +1,27 @@
+<%= form_with(model: prime_number_before, local: true) do |form| %>
+  <% if prime_number_before.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(prime_number_before.errors.count, "error") %> prohibited this prime_number_before from being saved:</h2>
+
+      <ul>
+      <% prime_number_before.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :number %>
+    <%= form.number_field :number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :prime_number_id %>
+    <%= form.text_field :prime_number_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

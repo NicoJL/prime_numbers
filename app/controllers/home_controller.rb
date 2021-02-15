@@ -4,7 +4,7 @@ class HomeController < ApplicationController
 
 	def index
 		@current_user = current_user
-
+		
 		Slack.configure do |config|
 		  config.token = ENV['TOKEN_API']
 		end
@@ -23,18 +23,17 @@ class HomeController < ApplicationController
 		  puts "Successfully connected, welcome '#{client.self.name}' to the '#{client.team.name}' team at https://#{client.team.domain}.slack.com."
 		end
 
+		c = Utility.new
+
 		client.on :message do |data|
-		  case data.text
-		  when 'bot hi' then
-		  	NumbersJob.perform_later data.text
-		    client.message(channel: data.channel, text: "Hi <@#{data.user}>!")
-		  when /^bot/ then
-		    client.message(channel: data.channel, text: "Sorry <@#{data.user}>, what?")
-		  when String  then
-		  	c = Utility.new
-		  	puts c.get_prime_numbers(data.text.to_i)
-		  	NumbersJob.perform_later data.text
-		  	client.message(channel: data.channel, text: "necesito un numero")
+		  case 
+		  
+		  when data.text.match(/\A[+-]?\d+\z/)  then	
+		  	is_prime =  c.get_prime_numbers(data.text.to_i)
+		  	NumbersJob.perform_later is_prime,data.text
+		  	client.message(channel: data.channel, text: "ok lets get it!")
+	  	when data.text.match(/[a-zA-Z]/) 
+	  		client.message(channel: data.channel, text: "I need a number")
 		  end
 		end
 

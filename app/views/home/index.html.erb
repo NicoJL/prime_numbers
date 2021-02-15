@@ -1,20 +1,27 @@
 <div class="row mt-4">
 	<div class="col col-12">
-	
 		<%#= link_to "Sign in with SLACK", "/authorize" %>
-
 		<% if @current_user %>
-			<h1>Hi, <%= @current_user.email %></h1>
+			<h5>Hi, <%= @current_user.email %></h5>
 		<% end %>
 	</div>
 </div>
 <hr />
 <div class="row">
 	<div class="col col-12">
-		<table class="table table-borderder table-striped">
-			<tr>
-				<td v-for="list in auxList">{{list}}</td>
-			</tr>
-		</table>
+		<span>Evaluate number: {{auxNumber}} {{auxMessage}}</span>
+	</div>
+	<div class="col col-12 mt-4 mb-4">
+		<h5 class="h5 mb-4" v-if="auxList.length > 0">Results</h5>
+		<div class="table-responsive">
+			<table class="table table-borderder table-striped">
+				<tr>
+					<td v-for="list in auxList">{{list}}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="col col-12 mt-4" v-if="auxList.length > 0">
+		<button v-on:click.prevent="registerNumber" class="btn btn-success btn-block">SAVE RESULTS</button>
 	</div>
 </div>

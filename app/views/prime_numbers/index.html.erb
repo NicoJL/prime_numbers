@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Prime Numbers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Prime number</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @prime_numbers.each do |prime_number| %>
+      <tr>
+        <td><%= prime_number.prime_number %></td>
+        <td><%= link_to 'Show', prime_number %></td>
+        <td><%= link_to 'Edit', edit_prime_number_path(prime_number) %></td>
+        <td><%= link_to 'Destroy', prime_number, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Prime Number', new_prime_number_path %>

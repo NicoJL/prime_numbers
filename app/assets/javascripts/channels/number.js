@@ -8,6 +8,8 @@ App.notification = App.cable.subscriptions.create("NumberChannel",{
 		},
 		received: function(data){
 			console.log(data.item);
+			console.log(data.is_prime);
+			app.isPrime = eval(data.is_prime);
 			app.auxNumber = data.item;
 			app.calculatePrime(data.item);
 		}

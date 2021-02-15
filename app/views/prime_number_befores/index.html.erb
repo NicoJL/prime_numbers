@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Prime Number Befores</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Number</th>
+      <th>Prime number</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @prime_number_befores.each do |prime_number_before| %>
+      <tr>
+        <td><%= prime_number_before.number %></td>
+        <td><%= prime_number_before.prime_number %></td>
+        <td><%= link_to 'Show', prime_number_before %></td>
+        <td><%= link_to 'Edit', edit_prime_number_before_path(prime_number_before) %></td>
+        <td><%= link_to 'Destroy', prime_number_before, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Prime Number Before', new_prime_number_before_path %>
