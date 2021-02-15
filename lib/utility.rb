@@ -22,7 +22,7 @@ class Utility
 			return false
 		end
 	end
-
+	
 	def is_number? string 
 		true if Integer(string) rescue false
 	end

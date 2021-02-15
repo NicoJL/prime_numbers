@@ -19,17 +19,9 @@ class OauthController < ApplicationController
   end                                                                             
 
   def authorize_callback      
-  	puts 'no se esto que es'                                                    
-    puts params["code"] 
-
-   
-
     uri = URI('https://slack.com/api/oauth.access')
 		res = Net::HTTP.post_form(uri, 'client_id' => ENV['CLIENT_ID'], 'client_secret' =>  ENV['CLIENT_SECRET'], 'code' => params['code'])
-		puts res.body
 		rc = JSON.parse(res.body)
-		puts '****'
-		puts rc
 		rc['access_token']
    	
    	begin
